@@ -6,6 +6,8 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -18,31 +20,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="users")
+@Table(name="categories")
 @NoArgsConstructor
 @Getter
 @Setter
-      //@entity (name="new entity name")by default entity name is user
-      //@table(name="users")to give the different name of table by default table name user
-public class User {
+public class Category {
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	     //id will be auto incremented bythe@generatevalue annotation
-	private int id;
+	private Integer categoryId;
 	
-	//if we want to chang the name of column 
-	@Column(name="user_name",nullable = false, length = 100)
-	private String name;
+	@Column(name="title", nullable= false)
+	private String categoryTitle;
 	
-	private String email;
+	@Column(name="description")
+	private String categoryDescription;
 	
-	private String password;
-	
-	private String about;
-	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Post> posts = new ArrayList<>();
-	
 
 }
