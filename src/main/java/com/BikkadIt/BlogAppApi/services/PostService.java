@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.BikkadIt.BlogAppApi.entity.Post;
 import com.BikkadIt.BlogAppApi.payloads.PostDto;
+import com.BikkadIt.BlogAppApi.payloads.PostResponse;
 
 public interface PostService {
 	
@@ -13,19 +14,23 @@ public interface PostService {
 	
 	//update
 	
-	Post updatePost(PostDto postDto, Integer postId);
+	PostDto updatePost(PostDto postDto, Integer postId);
 	
 	//delete 
 	
 	void deletePost(Integer postId);
 	
+	
+	
+	
+	
 	//get all post
 	
-	List<Post>  getAllPost();
+	PostResponse  getAllPost(Integer PageNumber, Integer PageSize,String sortBy,String shortDir);
 	
 	//get single post
 	
-	Post getPostById(Integer postId);
+	PostDto getPostById(Integer postId);
 	
 	//get all post by categoy
 	
@@ -36,7 +41,7 @@ public interface PostService {
 	List<PostDto>  getPostByUser(Integer userId);
 	
 	//serch post
-	List<Post> serchPost(String keyword);
+	List<PostDto> searchPosts(String keyword);
 	
 
 }
